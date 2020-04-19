@@ -1,0 +1,7 @@
+{% for screen in screens -%}
+    {% for line in screen -%}
+        {% for pixel in line -%}
+            <span style="background-color: {{ pixel[0] }}; color:{{ pixel[1] }}">{{ pixel[2] }}</span>
+        {%- endfor %}
+    {% endfor %}
+{%- endfor %}

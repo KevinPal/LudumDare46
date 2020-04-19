@@ -13,14 +13,14 @@ import textwrap
 import copy
 @app.route("/test_animation")
 def test_animation():
-    blank = [[bg_char for _ in range(80)] for _ in range(25)]
+    blank = [[("#f00", "#fff", "&nbsp") for _ in range(80)] for _ in range(25)]
     screens = []
 
     for i in range(10):
         frame = copy.deepcopy(blank)
-        frame[i    ][i    ] = black
-        frame[i    ][i + 1] = black
-        frame[i + 1][i    ] = black
-        frame[i + 1][i + 1] = black
-        screens.append("\n".join(["".join(line) for line in frame]))
-    return "\n".join(screens)
+        frame[i    ][i    ] = ("#000", "#fff", "&nbsp")
+        frame[i    ][i + 1] = ("#000", "#fff", "&nbsp")
+        frame[i + 1][i    ] = ("#000", "#fff", "&nbsp")
+        frame[i + 1][i + 1] = ("#000", "#fff", "&nbsp")
+        screens.append(frame)
+    return render_template('screens.jinja', screens=screens)
