@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="{{ url_for('static', filename="styles.css") }}"/>
+        <title>Utilities</title>
+    </head>
+    <body>
+        <h1>Utilities</h1>
+        Utilities is a game!
+        <div id="screen">
+        </div>
+        <script>
+            function sleep(ms) {
+              return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            var xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = async function() {
+                lines = xhttp.responseText.split("\n")
+                for (var i = 0; i < lines.length/25; i++) {
+                    document.getElementById("screen").innerHTML = lines.slice(i * 25, (i + 1)*25).join("\n")
+                    await sleep(1000)
+                }
+            }
+            xhttp.open("GET", window.location.href + 'test_animation', true)    
+            xhttp.send()
+        </script>
+    </body>
+</html>
